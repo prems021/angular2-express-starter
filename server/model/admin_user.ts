@@ -23,7 +23,7 @@ import {  sequelize , Sequelize } from '../routes/dbcon';
     },
   
   }, {
-    tableName: 'admin_users',
+    tableName: 'amr_admin_users',
      timestamps: false
   });
 
