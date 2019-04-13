@@ -1,14 +1,14 @@
 import { Request, Response, Router } from "express";
 import { Sequelize, sequelize } from './dbcon';
-import { Admin_users } from '../model/admin_user';
+import { Hb_users  } from '../model/admin_user';
 const adminRouter: Router = Router();
 
 
 adminRouter.get("/cdb_1", (request: Request, response: Response) => {
   
-   Admin_users.sync({force: true}).then(() => {
+   Hb_users.sync({force: true}).then(() => {
    //Table created
-  return Admin_users.create({
+  return Hb_users.create({
        
      USER_NAME: ''
         
@@ -24,7 +24,7 @@ adminRouter.get("/cdb_1", (request: Request, response: Response) => {
    var username = request.body.username;
    var password = request.body.password;
     
-    Admin_users.findOne({
+    Hb_users.findOne({
   where: {
     USER_NAME: request.body.username,
     PASSWORD: request.body.password
