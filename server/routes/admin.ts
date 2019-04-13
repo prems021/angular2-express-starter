@@ -1,4 +1,5 @@
 import { Request, Response, Router } from "express";
+import { Sequelize, sequelize } from './dbcon';
 import { Admin_users } from '../model/admin_user';
 const adminRouter: Router = Router();
 
