@@ -26,6 +26,8 @@
   "private": true,
   "dependencies": {
     "@angular/cli": "^1.6.0",
+    "@angular/compiler-cli": "~7.0.0",
+    "@angular/language-service": "~7.0.0",
     "@angular/animations": "7.2.12",
     "@angular/cdk": "7.3.7",
     "@angular/common": "7.2.12",
@@ -87,10 +89,8 @@
     "ts-helpers": "1.1.2",
     "ts-node": "8.0.0",
     "tslint": "5.15.0",
-    "typescript": "3.4.3",
- 
-   
-  },
+    "typescript": "3.4.3"
+   },
   "devDependencies": {
     "codelyzer": "~4.0.1",
     "concurrently": "^3.5.0",
