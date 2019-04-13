@@ -5,7 +5,7 @@ const adminRouter: Router = Router();
 
 adminRouter.get("/", (request: Request, response: Response) => {
 
-  response.json(user);
+  response.json('hi');
 });
 
 export { adminRouter };
