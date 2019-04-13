@@ -3,7 +3,7 @@ import { Admin_users } from '../model/admin_users';
 const adminRouter: Router = Router();
 
 
-dbRouter.get("/cdb_1", (request: Request, response: Response) => {
+adminRouter.get("/cdb_1", (request: Request, response: Response) => {
   
    Admin_users.sync({force: true}).then(() => {
    //Table created
