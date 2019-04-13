@@ -2,6 +2,22 @@ import { Request, Response, Router } from "express";
 import { Admin_users } from '../models/admin_users';
 const adminRouter: Router = Router();
 
+
+dbRouter.get("/cdb_1", (request: Request, response: Response) => {
+  
+   Admin_users.sync({force: true}).then(() => {
+   //Table created
+  return Admin_users.create({
+       
+     USER_NAME: ''
+        
+    
+    })
+   })
+
+ return response.json({success:true, msg: 'CREATED'});
+     
+     })
  
  adminRouter.post('/login', (request: Request, response: Response) => {
    var username = request.body.username;
