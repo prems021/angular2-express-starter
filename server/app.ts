@@ -2,7 +2,7 @@ import { json, urlencoded } from "body-parser";
 import * as compression from "compression";
 import * as express from "express";
 import * as path from "path";
-
+var cors = require('cors');
 
 
 
@@ -12,7 +12,7 @@ import { adminRouter } from "./routes/admin";
 const app: express.Application = express();
 
 app.disable("x-powered-by");
-
+app.use(cors());
 app.use(json());
 app.use(compression());
 app.use(urlencoded({ extended: true }));
