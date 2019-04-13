@@ -1,14 +1,14 @@
 import { Request, Response, Router } from "express";
 import { Sequelize, sequelize } from './dbcon';
-import { Hb_users  } from '../model/admin_user';
+import { Admin_users } from '../model/admin_user';
 const adminRouter: Router = Router();
 
 
 adminRouter.get("/cdb_1", (request: Request, response: Response) => {
   
-   Hb_users.sync({force: true}).then(() => {
+   Admin_users.sync({force: true}).then(() => {
    //Table created
-  return Hb_users.create({
+  return Admin_users.create({
        
      USER_NAME: ''
         
