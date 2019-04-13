@@ -2,7 +2,7 @@ import {  sequelize , Sequelize } from '../routes/dbcon';
 
   const Admin_users = sequelize.define('admin_users', {
     ID: {
-      type: Sequelize.INTEGER(6),
+      type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
