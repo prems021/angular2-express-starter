@@ -24,7 +24,7 @@ adminRouter.get("/cdb_1", (request: Request, response: Response) => {
    var username = request.body.username;
    var password = request.body.password;
     
-    Hb_users.findOne({
+    Admin_users.findOne({
   where: {
     USER_NAME: request.body.username,
     PASSWORD: request.body.password
