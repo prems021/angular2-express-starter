@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 
-const userRouter: Router = Router();
+const adminRouter: Router = Router();
 
 const user = {
   address: {
@@ -31,4 +31,4 @@ userRouter.get("/", (request: Request, response: Response) => {
   response.json(user);
 });
 
-export { userRouter };
+export { adminRouter };
