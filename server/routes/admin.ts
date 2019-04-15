@@ -1,17 +1,17 @@
 import { Request, Response, Router } from "express";
 import { Sequelize, sequelize } from './dbcon';
 
-import { Super_admin } from '../models/super_admin';
-import { Hb_users } from '../models/users';
-import { Invoice_master } from '../models/invoice_master';
-import { Hb_customers } from '../models/hb_customers';
-import { Hb_products } from '../models/products';
+import { Super_admin } from '../model/super_admin';
+import { Hb_users } from '../model/users';
+import { Invoice_master } from '../model/invoice_master';
+import { Hb_customers } from '../model/hb_customers';
+import { Hb_products } from '../model/products';
 
-import { Invoice_slave } from '../models/invoice_slave';
-import { Expence_category } from '../models/expense_category';
-import  { Income_expence } from '../models/income_expence';
-import { Third_party } from '../models/third_party';
-import { Cash_reciept} from '../models/cash_reciept';
+import { Invoice_slave } from '../model/invoice_slave';
+import { Expence_category } from '../model/expense_category';
+import  { Income_expence } from '../model/income_expence';
+import { Third_party } from '../model/third_party';
+import { Cash_reciept} from '../model/cash_reciept';
 
 const adminRouter: Router = Router();
 
