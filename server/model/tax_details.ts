@@ -1,33 +1,33 @@
 import {  sequelize , Sequelize } from '../routes/dbcon';
-
+const dbcon_1 = require("../routes/dbcon");
   const Tax_detail = sequelize.define('tax_detail', {
     ID: {
-      type: Sequelize.INTEGER,
+      type: dbcon_1.Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
     
    INVOICE_NUMBER : {
-    type: Sequelize.INTEGER,
+    type: dbcon_1.Sequelize.INTEGER,
     allowNull: true
    },
      
     TAX_NAME : {
-      type: Sequelize.STRING,
+      type: dbcon_1.Sequelize.STRING,
       allowNull: true
     },
      TAX_PER : {
-      type: Sequelize.FLOAT,
+      type: dbcon_1.Sequelize.FLOAT,
       allowNull: true
     },
       TAX_AMT : {
-      type: Sequelize.FLOAT,
+      type: dbcon_1.Sequelize.FLOAT,
       allowNull: true
     },
     
      IS_B2B: {
-      type: Sequelize.BOOLEAN,
+      type: dbcon_1.Sequelize.BOOLEAN,
       allowNull: true
     },
     
