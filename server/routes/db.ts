@@ -6,8 +6,7 @@ import { Hb_users } from '../model/users';
 import { Invoice_master } from '../model/invoice_master';
 import { Hb_customers } from '../model/hb_customers';
 import { Hb_products } from '../model/products';
-import { Tax_prototype } from '../model/tax_prototype';
-import { Tax_detail } from '../model/tax_details';
+
 import { Invoice_slave } from '../model/invoice_slave';
 import { Expence_category } from '../model/expense_category';
 import  { Income_expence } from '../model/income_expence';
@@ -123,39 +122,6 @@ dbRouter.get("/invoice_slave", (request: Request, response: Response) => {
      
      })
 
-
-dbRouter.get("/tax_details", (request: Request, response: Response) => {
-  
-   Tax_detail.sync({force: true}).then(() => {
-   //Table created
-  return Tax_detail.create({
-       
-     INVOICE_NUMBER: 1
-        
-    
-    })
-   })
- return response.json({success:true, msg: 'CREATED'});
-     
-     })
-
-
-
-
-dbRouter.get("/tax_proto", (request: Request, response: Response) => {
-  
-   Tax_prototype.sync({force: true}).then(() => {
-   //Table created
-  return Tax_prototype.create({
-    
-    
-     TAX_NAME: 'cess'
-         
-    })
-   })
- return response.json({success:true, msg: 'CREATED'});
-     
-     })
 
 
 
