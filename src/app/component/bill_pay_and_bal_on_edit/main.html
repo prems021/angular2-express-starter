@@ -1,0 +1,32 @@
+<section id="non-printable">
+
+<div class="col-sm-12">
+
+  <div class="row">
+      <div class="col-sm-4" id="non-printable"style="margin-top: -2.5%;">   
+          <span class="input-group-addon" id="basic-addon3">Previous  Payment  </span>
+          <input [attr.disabled]="true" #box32 type="number" class="form-control " [(ngModel)]="total_pri_paid"  
+                      style="width: 70%; border-color : #1dc;" 
+            id="basic-url" aria-describedby="basic-addon3">
+     </div>
+
+     <div class="col-sm-4" id="non-printable"style="margin-top: -2.5%;">   
+          <span class="input-group-addon" id="basic-addon3">Total Paid  </span>
+          <input #box34 type="number" class="form-control " (focus)="on_focus_total_paid()" (blur)="blur_paid_today(box34.value)" [(ngModel)]="total_paid"  
+                      style="width: 70%; border-color : #1dc;" 
+            id="basic-url" aria-describedby="basic-addon3">
+     </div>
+
+    <div class="col-sm-4" id="non-printable" style="margin-top: -2.5%;">
+      <span class="input-group-addon" id="basic-addon3" >Total Due </span>
+      <input type="number" [attr.disabled]="true"  class="form-control " [(ngModel)]="total_due" style="width: 70%; border-color : #1dc; 
+      " id="basic-url" aria-describedby="basic-addon3">
+    </div>   
+
+
+  
+
+</div>
+</div>
+
+</section>

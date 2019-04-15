@@ -1,0 +1,173 @@
+
+
+
+
+
+<section id="non-printable">
+
+    <div class="row"> 
+    
+          <div class="col-md-4">
+             <label>Buyer Name : </label> 
+        
+           <div style="display:inline-block;width: 70%;">
+          <input ngui-auto-complete #autos class="form-control"  [(ngModel)]="ss.invoice_model.cus_name"
+                 style="width:320px;font-size: 18px;border-color:#52c3bb;"  [source]="arrayOfCusValues"  
+                placeholder="Customer Search"    
+                  (blur)="cus_blur(autos.value)" 
+                  list-formatter="(CUSTOMER_NAME) GSTIN"
+                  display-property-name="CUSTOMER_NAME"> 
+        </div> 
+       </div> 
+
+
+          <div class="col-md-3">
+          <label> Street : </label> 
+         <div style="display:inline-block;">
+          <input type="text" style="width:270px;border-color:#52c3bb;"   class="form-control"  [(ngModel)]="ss.invoice_model.cus_street">
+         </div>
+         </div>
+
+       
+    
+           <div class="col-md-3">
+          <label> City : </label> 
+         <div style="display:inline-block;">
+          <input type="text" style="width:220px;border-color:#52c3bb;"   class="form-control"  [(ngModel)]="ss.invoice_model.cus_city">
+         </div>
+         </div>
+    
+    
+         
+          
+         
+           <div class="col-md-2" >
+          <label> Phone : </label> 
+         <div style="display:inline-block;">
+             <input type="text" class="form-control"   style="width: 145px;border-color:#52c3bb;"
+              id="customer-name" 
+           [(ngModel)]="ss.invoice_model.cus_phone">
+          
+         </div>
+         </div>
+    
+           
+         
+           <div class="col-md-3" style="margin-top:10px;padding-left: 25px;" >
+          <label> Mobile : </label> 
+         <div style="display:inline-block;">
+             <input type="text" class="form-control"   style="width: 145px;border-color:#52c3bb;"
+              id="customer-name" 
+           [(ngModel)]="ss.invoice_model.cus_mobile">
+          
+         </div>
+         </div>
+    
+    
+         
+    
+    
+         <div class="col-md-4" style="margin-top:10px;">
+          <label> PAN No: </label> 
+         <div style="display:inline-block;">
+            <input type="text" #box1 style="width: 200px;border-color:#52c3bb;" 
+              class="form-control"
+       [(ngModel)]="ss.invoice_model.pan_no">
+        
+          
+         </div>
+         </div>
+    
+    
+    
+    
+    
+      <div class="col-md-3" style="margin-top:10px;" >
+          <label> GST No: </label> 
+         <div style="display:inline-block;">
+         <input type="text" style="width: 150px;border-color:#52c3bb;"   class="form-control" [(ngModel)]="ss.invoice_model.cus_gst">
+        
+          
+         </div>
+         </div>
+    
+    
+         <div class="col-md-3" style="margin-top:10px;" >
+          <label> Place Of Supply: </label> 
+         <div style="display:inline-block;">
+         <input type="text" style="width: 190px; border-color:#52c3bb;"  class="form-control" [(ngModel)]="ss.invoice_model.place_of_supply">
+        
+          
+         </div>
+         </div>
+    
+         
+         <div class="col-md-2" style="margin-top:10px;" >
+          <label> Bundles:  </label> 
+         <div style="display:inline-block;">
+         <input type="text" style="width: 50px;border-color:#52c3bb;"  class="form-control" [(ngModel)]="ss.invoice_model.no_bundles">
+        
+          
+         </div>
+         </div>
+    
+         
+    
+     </div>
+    
+    
+    </section>  
+<!--     
+    <button   (click)="check()">+</button> -->
+
+
+    <section id="non-printable" style="width:100%; height:10px;"> 
+            
+    </section>          
+              
+    
+    <section id="non-printable"> 
+    
+    
+  <!--   <mat-card class="header-card">
+                <div style="margin-top: -18px; display: inline-block;width: 13%;">SI </div> 
+                <div style="display: inline-block; width: 18%;"> Description </div>
+                <div style="display: inline-block; width: 5%;"> Qty </div>
+                <div style="display: inline-block; width: 8%;"> GrossWeight </div>
+                <div style="display: inline-block; width: 8%;"> StoneWeight </div>
+                <div style="display: inline-block; width: 7.7%;"> NetWeight </div> 
+                <div style="display: inline-block; width: 12.7%;"> Value Of Article </div>
+                <div style="display: inline-block; width: 4.7%;"> VA % </div>
+                <div style="display: inline-block; width: 7.7%;"> Stone Value </div>
+               <div style="display: inline-block; width: 2%;">  </div>
+                <div style="display: inline-block; width: 10%;"> Total </div>
+               <div style="display: inline-block; width: 2%;"> 
+                   <button *ngIf="isPrint" [disabled]="item_remove_flag()" style="width:100%;" (click)="removeItem()">X</button>
+    
+               </div>   
+    
+    </mat-card>   -->
+
+    <mat-card class="header-card">
+            <div style="margin-top: -18px; display: inline-block;width: 13%;">SI </div> 
+            <div style="display: inline-block; width: 22%;"> Description </div>
+            <div style="display: inline-block; width: 11%;"> HSN Code </div>
+            <div style="display: inline-block; width: 9%;">Quantity</div>
+            <div style="display: inline-block; width: 4%;">Unit</div>
+
+            <div style="display: inline-block; width: 5%;">  </div>
+            <div style="display: inline-block; display: inline-block;width: 8.7%;text-align: center;"> Price </div> 
+            <div style="display: inline-block; width: 1.5%;">  </div>
+            <div style="display: inline-block; width: 12.2%;text-align: center;"> Net price </div> 
+            
+           <div style="display: inline-block; width: 2%;"> 
+           
+           </div> 
+    
+</mat-card>  
+
+    
+    
+    
+    </section>
+    

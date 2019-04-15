@@ -1,0 +1,168 @@
+
+
+<section class="top_sec" id="non-printable" >
+ 
+    <div class="home">
+       
+       <img src="../../assets/home.svg" style="width:25px;" />
+    <a routerLink="/dash" routerLinkActive="active">home</a>
+    </div>
+    
+</section> 
+
+<section *ngIf="!print_flag">
+
+<!-- <section id="non-printable" print_flag style="width:100%;height:25px;border-bottom: 1px solid brown">
+ <h3 style="float: right;font-size: 20px;margin-right: 20px;
+    font-weight: bold;"> Reciept No: {{reciept_number}} </h3>
+</section> -->
+
+
+<section id="non-printable" style="width:100%;height:30px;border-bottom: 1px solid brown">
+
+    <div style="width:100%;text-align: center;background-color: tan;
+    font-size: 24px;"> Cash Reciept For Regular Customer   </div>
+
+
+
+</section>
+
+<section  id="non-printable" style="width:100%;height:50px;border-bottom: 1px solid brown; margin-top: 13px;">
+<div class="row">
+<div class="col-md-4">
+    <label>Buyer Name : </label> 
+    
+       <div style="display:inline-block;width: 70%;padding-top: 2px;">
+      <input ngui-auto-complete #autos class="form-control" 
+             style="width:320px;font-size: 18px;border-color:#52c3bb;"  [source]="arrayOfCusValues"  
+            placeholder="Customer Search"    
+              (blur)="cus_blur(autos.value)"
+              list-formatter="(CUSTOMER_NAME) STREET"
+              display-property-name="CUSTOMER_NAME"> 
+    </div> 
+</div> 
+    <div class="col-md-4">
+        <label style="font-size: 22px;
+        padding-top: 5px;">Payment Mode : </label> 
+    
+ <select class="form-control" style="width: 125px;display:inline-block" [(ngModel)]="selectedOption" (ngModelChange)="onChange_option($event)">
+ <option *ngFor="let pay_option of pay_options" [value]="pay_op">{{pay_option}}
+         
+        </option>
+</select>
+</div> 
+</div>
+
+</section>
+<section  id="non-printable" style="width:100%;height:40px;border-bottom: 1px solid brown; margin-top: 13px;">
+
+
+
+
+
+</section>
+
+
+
+  <section  id="non-printable" style="width: 100%; height: 50px;margin-bottom: 15px;">
+
+ 
+<div style="display: inline-block;width: 20%;"> 
+     <label> Date of Payment:  : </label>  
+<div style="display: inline-block;width: 30%;" *ngIf="date_change_flag === 0">
+     <input matInput [matDatepicker]="from_date"   id="non-printable" style="width:1px;border-style: none;"
+       placeholder="" (dateInput)="catch_invoice_date(from_date)">
+  <mat-datepicker-toggle matSuffix [for]="from_date" id="non-printable" ></mat-datepicker-toggle>
+  <mat-datepicker #from_date id="non-printable"></mat-datepicker>
+  
+</div>
+   
+ <label *ngIf="date_change_flag  === 2" > {{cash_date  | date : 'longDate'}} </label> 
+  <button  *ngIf="date_change_flag  === 2" type="button"  (click)="change_cash_date()" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-pencil"></span> Edit
+        </button>
+</div>
+
+</section>
+
+
+<section  id="non-printable" style="width: 100%; height: 50px;margin-bottom: 15px;">
+
+     <div style="margin-top:10px;margin-left:13px;width: 30%;display:inline-block;">
+         <label> Due Amount </label>
+         <input #box3  style="width:220px;display: inline-block;padding-left: 3px;margin-left: 6px;
+         padding-top: 3px;" placeholder="Amount" class="form-control" [disabled]='true'   [(ngModel)]="cash__model.due_balance">   
+    </div>
+
+
+    <div style="margin-top:10px;display:inline-block;margin-left: 13px;width: 30%">
+         <label> Amount Paid </label>
+         <input #box2  style="width:220px;display: inline-block;padding-left: 3px;margin-left: 6px;
+         padding-top: 3px;" placeholder="Amount" class="form-control"  (keyup)="change_two(box2.value)"  [(ngModel)]="cash__model.amount_payed">   
+    </div>
+
+     <div style="margin-top:10px;display:inline-block;margin-left: 13px;width: 30%">
+         <label> Amount Paid </label>
+         <input #box2  style="width:220px;display: inline-block;padding-left: 3px;margin-left: 6px;
+         padding-top: 3px;" placeholder="Amount" class="form-control" [disabled]='true'  [(ngModel)]="cash__model.balance_amt">   
+    </div>
+
+</section>
+
+
+
+
+
+<section  id="non-printable" *ngIf="cheque_flag" style="width: 100%; height: 50px;">
+
+        <div  style="margin-top:15px;margin-left: 5px; display: inline-block;width: 25%;">
+                 <label> Cheque Number : </label>
+                 <input #box4   placeholder="Cheque number"
+                   class="form-control" style="width:70%;display: inline-block" 
+                   [(ngModel)]="cash__model.cheque_number">   
+       </div>
+
+
+
+
+
+
+<div style="display: inline-block;width: 20%;"> 
+     <label> Cheque Date  : </label>  
+<div style="display: inline-block;width: 30%;" *ngIf="date_c_change_flag === 0">
+     <input matInput [matDatepicker]="chek_date"   id="non-printable" style="width:1px;border-style: none;"
+       placeholder="" (dateInput)="catch_chek_date(chek_date)">
+  <mat-datepicker-toggle matSuffix [for]="chek_date" id="non-printable" ></mat-datepicker-toggle>
+  <mat-datepicker #chek_date id="non-printable"></mat-datepicker>
+  
+</div>
+   
+ <label *ngIf="date_c_change_flag === 2" > {{Cheque_Date  | date : 'longDate'}} </label> 
+     <button  *ngIf="date_c_change_flag === 2" type="button"  (click)="change_c_date()" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-pencil"></span> Edit
+        </button>
+</div>
+
+
+
+
+      <div  style="margin-top:15px;display: inline-block;margin-left: 5px;width: 50%;">
+            <label> Bank Name : </label>
+             <input #box6   placeholder="Bank Name" class="form-control" 
+              style="width:48%;display: inline-block"  [(ngModel)]="cash__model.bank_name">   
+     </div>
+
+</section>
+    
+    
+    
+    
+     <button   id="non-printable" class="btn btn-primary" [disabled]="isClickedOnce"   style="    margin-top: 15px;
+        margin-left: 80%;" (click)="cash_reciept()">Genrate cash recipt</button>
+
+
+
+ </section>       
+
+
+

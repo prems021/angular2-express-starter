@@ -1,0 +1,423 @@
+<section style="height: 10px;" id="non-printable"  *ngIf="!print_section" >
+  <a routerLink="/dash" routerLinkActive="active">home</a>
+</section> 
+
+
+<section class="prem-header-section" id="non-printable">
+
+  <div style="display:inline-block; width: 69%;">
+  </div>
+ <div *ngIf="invo_change_flag === 2" style="display: inline-block;width: 30%;font-size: 20px;font-weight: bold;height: 20px;">
+        <label for="invoice-number">Invoice No #</label> <input style="width: 130px;" type="text" id="invoice-number"  
+         [attr.disabled]="true"  [(ngModel)]="ss.invoice_model.INVOICE_NUMBER">
+</div>
+
+  <div style="font-size: 22px; display: inline-block;width: 68%;text-align:center; font-weight: bold; ">
+      UPDATE  INVOICE 
+  </div>
+
+
+
+<div style="display: inline-block;width: 30%;"> 
+     <label> Issue date : </label>  
+<div style="display: inline-block;width: 30%;" *ngIf="ss.date_change_flag === 0">
+     <input matInput [matDatepicker]="from_date"   id="non-printable" style="width:1px;border-style: none;"
+       placeholder="" (dateInput)="catch_invoice_date(from_date)">
+  <mat-datepicker-toggle matSuffix [for]="from_date" id="non-printable" ></mat-datepicker-toggle>
+  <mat-datepicker #from_date id="non-printable"></mat-datepicker>
+  
+</div>
+   
+ <label *ngIf="ss.date_change_flag === 2" > {{ss.invoice_model.invoice_date  | date : 'longDate'}} </label> 
+     <button  *ngIf="ss.date_change_flag === 2" type="button"  (click)="change_date()" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-pencil"></span> Edit
+        </button>
+</div>
+
+
+
+</section>  
+
+<app-bill-top-b2b id="non-printable"  *ngIf="!print_section" > </app-bill-top-b2b>
+
+ 
+ 
+<section id="non-printable"  *ngIf="!print_section" >
+ 
+</section>  
+
+ <section id="non-printable"  *ngIf="!print_section" >
+
+<div class="items-card"  *ngFor="let item of ss.invoice_model.items; let k=index " ng-animate="'slide-down'">
+
+   <mat-card class="item-card">
+      <div style=" width: 4%; display: inline-block; ">
+              {{k+1}} 
+     </div>
+
+        <div style="width: 28%; display: inline-block; ">
+        <input style="width: 98%; text-align:center"   ngui-auto-complete #autos [(ngModel)]="item.PRODUCT_NAME"
+           [source]="arrayOfKeyValues"  
+            placeholder="Description" (focus)="focus_one(k)"  
+              (keyup.enter)="change_one(autos.value)" (blur)="change_one(autos.value)"
+              list-formatter="(HSN_CODE) PRODUCT_NAME"
+              display-property-name="PRODUCT_NAME">
+
+      </div>  
+
+         <div style="width:2%; display:inline-block;"> </div>
+    <div style="width:11.5%; display:inline-block;">
+        
+         <input  [disabled]="true"  style="text-align: center;" #box5 [(ngModel)]="item.HSN_CODE" 
+         size="8" placeholder=" " > 
+        
+    </div>
+
+     <div style="width : 9.7%;display: inline-block;">
+        
+           <input #box style="text-align:center;" size="6"  placeholder="Quantity"  (focus)="focus_one(k)" 
+         (keyup)="change_qty(box.value)"
+         [(ngModel)]="item.QTY">  
+        
+        
+    </div>
+
+    <div style=" width : 2.5%;display: inline-block;">
+
+       {{item.UNIT}}
+  
+     </div>
+
+       <div style="width : 7.3%;display: inline-block;">
+        
+                        
+       </div>
+
+        <div style="width : 12.35%;display: inline-block;">
+        
+           <input #box2  (focus)="focus_one(k)" 
+         (keyup)="change_price(box2.value)" style="text-align:center;"
+          size="13" placeholder="PRICE" [(ngModel)]="item.PRICE" >  
+        
+        
+    </div>
+
+
+
+    <div style=" width : 12%;   display: inline-block;">
+        <input #box3 [disabled]="true"  [(ngModel)]="item.NET_PRICE" style="text-align:center;" 
+        size="10" placeholder=" " > 
+            
+    </div>
+
+ 
+     <div style="width:2%; display:inline-block">
+  
+         <button  [disabled]="item_remove_flag()" style="width:100%;" (click)="removeItem()">X</button>
+
+       <!--   <button *ngIf="isPrint"   style="width:100%;" (keydown.f4)="addItem()" (click)="addItem()"
+          (keydown.ArrowDown)="addItem(k)" (keydown.ArrowUp)="RemoveItem(k)" >+</button> -->
+
+   </div>
+
+   <div style="width:.5%; display:inline-block">
+   </div>
+   
+  <div style="width:2%; display:inline-block">
+  </div>  
+ </mat-card>
+</div>
+</section>
+
+
+
+
+ <app-bill-sub-total-section-edit id="non-printable"  *ngIf="!print_section"  (valueChange)='get_grand_total($event)' 
+[sub_total]="ss.invoice_model.sub_total"> </app-bill-sub-total-section-edit>
+
+
+ 
+<section id="non-printable">
+
+<div class="col-sm-12">
+
+  <div class="row">
+      <div class="col-sm-4" id="non-printable"style="margin-top: -2.5%;">   
+          <span class="input-group-addon" id="basic-addon3">Previous  Payment  </span>
+          <input [attr.disabled]="true" #box32 type="number" class="form-control " [(ngModel)]="this.ss.invoice_model.total_pre_paid"  
+                      style="width: 70%; border-color : #1dc;" 
+            id="basic-url" aria-describedby="basic-addon3">
+     </div>
+
+     <div class="col-sm-4" id="non-printable"style="margin-top: -2.5%;">   
+          <span class="input-group-addon" id="basic-addon3">Total Paid  </span>
+          <input #box34 type="number" class="form-control "  (keyup)="blur_paid_today(box34.value)" [(ngModel)]="this.ss.invoice_model.total_paid_today"  
+                      style="width: 70%; border-color : #1dc;" 
+            id="basic-url" aria-describedby="basic-addon3">
+     </div>
+
+    <div class="col-sm-4" id="non-printable" style="margin-top: -2.5%;">
+      <span class="input-group-addon" id="basic-addon3" >Total Due </span>
+      <input type="number" [attr.disabled]="true"  class="form-control " [(ngModel)]="this.ss.invoice_model.total_due" style="width: 70%; border-color : #1dc; 
+      " id="basic-url" aria-describedby="basic-addon3">
+    </div>   
+
+
+  
+
+</div>
+</div>
+
+</section>
+
+
+
+
+
+
+  
+   <button [disabled]="isClickedOnce" id="non-printable" class="btn btn-primary" style="margin-top: 10px;
+    
+    margin-left: 50%;"  (click)="print_invoice()">Update & Print</button>
+
+
+
+<div id="snackbar">{{snak_msg}}</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section   style="width: 100%;height:770px;border: 1px solid" id="printable">
+
+ 
+  <section style="width:100%;height:135px;border-bottom:1px solid;">
+    <div style="width: 18%;height: 120px;display: inline-block;">
+     <img src="../assets/v_logo.jpg" style="width: 220px; padding-top: 5px;padding-left: 80px;height: 130px;
+     position: absolute;" /> 
+    </div>
+    <div style="width: 75%;height: 130px;display: inline-block;position: absolute;">
+    <div style="font-size: 45px; 
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    height: 57px;"> 
+      {{company_name}}  <!-- SR BUILDING MATERIALS --> 
+    </div>
+      <div style="font-size:25px;font-weight:bold;text-align:center;display:inline-block;width:100%;height:32px;"> 
+       VADAKKEVILA, KOLLAM. Pin : 691010 <br> Ph : 9633345679 , 8138028942 
+
+    <!--    Papinsheri Haji Road Kannur <br> Ph : 9656218061  -->
+    </div>
+
+
+ 
+    </div>
+  </section> 
+
+
+<section id="container" style="width: 100%;height:128px;border-bottom:1px solid #7bd6b3"> 
+
+  <div style="width:50%;display:inline-block;height:128px;border-right:1px solid;padding-left: 10px;">
+    
+                <label  style="display:inline-block;width:40%;height:16px;"> State : Kerala </label> 
+                <label  style="display:inline-block;width:40%;height:16px;">   State Code: 32 </label> 
+  <label  style="width:100%;height:16px;display:inline-block;">    Invoice Number: B {{ss.invoice_model.INVOICE_NUMBER}} </label>
+             <label  style="width:100%;height:16px;display:inline-block;"> 
+              Date Of Invoice : {{ss.invoice_model.invoice_date | date : 'longDate'}} </label>
+             <label style="width:100%;height:16px;display:inline-block;">     Place Of Supply : {{ss.invoice_model.place_of_supply}}  </label>
+              <label  style="width:100%;height:16px;display:inline-block;">  No Of Bundles : {{ss.invoice_model.no_bundles}}   </label>
+
+
+   </div>
+
+    <div id="infoi" style="width:50%;display:inline-block;margin-top: 4px;">
+        <div style="padding-left:10px;display:inline-block;width: 100%;height:30px;">
+                           Name : {{ss.invoice_model.cus_name}}
+                   </div>
+                   <div style="padding-left:10px;display:inline-block;width: 100%;height:30px;">
+                        Address : {{ss.invoice_model.cus_street}} {{ss.invoice_model.cus_city}}
+                   </div>
+                  
+                   <div style="padding-left:10px;display:inline-block;width: 50%;height:30px;">
+                      Ph : {{ss.invoice_model.cus_phone}}
+                   </div>
+                    <div style="padding-left:10px;display:inline-block;width: 50%;height:30px;">
+                      Mob : {{ss.invoice_model.cus_mobile}}
+                   </div>
+                   <div style="padding-left:10px;display:inline-block;width: 50%;height:30px;">
+                   PAN No : {{ss.invoice_model.pan_no}}
+                   </div>
+                    <div style="padding-left:10px;display:inline-block;width: 50%;height:30px;">
+                   GST No : {{ss.invoice_model.cus_gst}}
+                   </div>
+                 
+      </div>
+
+
+</section>
+
+  
+
+
+
+
+
+
+
+  <section id="container"  style="height:382px;background-color:#dde;width: 100%;border-bottom:1px solid;border-left:1px solid;border-top:1px solid;    margin-left: 0px;">
+
+<table id="navi"  style="width:100%;">
+  <tr style="border-bottom: 1px solid;">  
+         <th style="width:2.8%; border-right:1px solid;padding-left:5px;padding-top:7px;">SN</th>
+         <th style="width:26%;border-right:1px solid;padding-left:5px;"> Description </th>
+         <th style="width:3%;border-right:1px solid; padding-left:5px;"> Qty </th>
+          <th  style="width:7.5%; border-right:1px solid;padding-left:5px;"> HSN/Code </th>
+         <th  style="width:7.5%;border-right:1px solid;padding-left:3px;"> Unit </th>
+         
+          <th  style="width:7.5%; border-right:1px solid;padding-left:3px;"> Rate </th>
+         <th style="width:8.5%;border-right:1px solid;padding-left:5px;"> Net Price </th>
+         
+         
+   </tr>       
+     <tr style="height:382px;" >
+
+
+     
+        
+     
+        <td style="border-right: 1px solid;border-bottom: 1px solid;border-left: 2px solid;">  </td>  
+       
+        <td style="border-right: 1px solid;border-bottom: 1px solid">  </td>  
+          
+         <td style="border-right: 1px solid;border-bottom: 1px solid">  </td>  
+          <td style="border-right: 1px solid;border-bottom: 1px solid">  </td> 
+        <td style="border-right: 1px solid;border-bottom: 1px solid">  </td> 
+         <td style="border-right: 1px solid;border-bottom: 1px solid">  </td>  
+        <td style="border-right: 1px solid;border-bottom: 1px solid">  </td> 
+    
+     
+     
+       
+   </tr>  
+
+  </table>
+
+<div style="display:inline-block; width:100%;height:40px;"> </div>
+
+   <div style="width:100%;" *ngFor="let item of ss.invoice_model.items; let k=index; " ng-animate="'slide-down'" style="height: 35px;">
+
+         
+     <div style="display:inline-block;width:5.2%;padding-left:12px;">
+       {{k+1}}
+     </div>
+   
+
+   <div style="display:inline-block;width:40.2%; ">
+       {{item.PRODUCT_NAME}} 
+     </div>
+
+     <div style="display:inline-block;width:5%; text-align: center; ">
+      {{item.QTY}}
+     </div>
+
+      <div style="display:inline-block;width:11.7%; text-align: center; ">
+       {{item.HSN_CODE}}
+     </div>
+
+   
+     
+     <div style="display:inline-block;width:12%; text-align: center;">
+        {{item.UNIT }}
+     </div>
+
+    
+      <div style="display:inline-block;width:12%;text-align: center;">
+        {{item.PRICE | number : '1.2-2'}}
+     </div>
+
+     
+
+       <div style="display:inline-block;width:12.6%; text-align: center;">
+       {{item.NET_PRICE  | number : '1.2-2' }}   
+         
+     </div>
+
+      
+   </div>   
+
+
+
+
+</section>
+
+<section style="width:100%;height:30px;border-left:1px solid;display:inline-block;">
+  <div style="width:25.7%;display:inline-block;"> </div> 
+   <div style="width:19.55%;display:inline-block;padding-top: 3px;text-align: center;"> Total </div> 
+       <div style="width:5.55%;display:inline-block;text-align: center;"> {{total_qty}} </div> 
+        <div style="width:35.75%;display:inline-block;text-align: center;">  </div> 
+          <div style="width:10.9%;display:inline-block;text-align: center;"> {{this.ss.invoice_model.sub_total| number : '1.2-2'}} </div>
+
+</section>
+ 
+
+
+
+
+
+
+<section style="height:60px;" > 
+  <div style="display:inline-block;width:68%;height:60px;border-right:1px solid;font-size: 21px;
+    font-weight: bold;padding-top: 10px;">
+ Amount In Figure : {{fig_main}}
+  </div> 
+  <div style="display: inline-block;width: 32%;height: 60px;position: absolute;padding-top:4px;padding-left:5px;border-bottom: 1px solid;border-top: 1px solid;">
+     <div style="display:inline-block;width:100%;height:25px;font-size: 20px;font-weight: bold;">
+  Total  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{this.ss.invoice_model.sub_total | number : '1.2-2'}}
+     </div>
+      <div style="display:inline-block;width:100%;height:25px;">
+        Round-off : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{frac   | number : '1.2-2'}}
+      </div>
+
+      
+   
+  </div>
+</section>
+
+<section style="height:33px;" > 
+  <div style="display:inline-block;width:68%;height:33px;border-right:1px solid;padding-left: 25px;font-size: 18px;font-weight: bold;">
+  
+  </div>
+      <div style="display: inline-block;
+    width: 32%;
+    height: 33px;
+    position: absolute;
+    font-size: 21px;
+    font-weight: bold;
+    padding-left: 5px;
+    border-bottom: 1px solid;">
+     
+  Grand Total :     &nbsp; &nbsp;  &nbsp;{{floor | number : '1.2-2'}} 
+    
+     
+ 
+  </div>
+  
+</section>
+
+
