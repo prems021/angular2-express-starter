@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
 import { Sequelize, sequelize } from './dbcon';
 
-import { Super_admin } from '../models/super_admin';
+import { Super_admin } from '../model/super_admin';
 import { Hb_users } from '../model/users';
 import { Invoice_master } from '../model/invoice_master';
 import { Hb_customers } from '../model/hb_customers';
