@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
 import { Sequelize, sequelize } from './dbcon';
-import { Hb_users } from '../models/users';
-import { Super_admin } from '../models/super_admin';
+import { Hb_users } from '../model/users';
+import { Super_admin } from '../model/super_admin';
 const userRouter: Router = Router();
 
 userRouter.get("/", (request: Request, response: Response) => {
