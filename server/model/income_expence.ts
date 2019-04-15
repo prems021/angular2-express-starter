@@ -1,38 +1,38 @@
 
 
 import {  sequelize , Sequelize } from '../routes/dbcon';
-
+const dbcon_1 = require("../routes/dbcon");
   const Income_expence = sequelize.define('income_expense', {
     ID: {
-      type: Sequelize.INTEGER,
+      type: dbcon_1.Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
     EXPENCE_ENTRY_NO: {
-      type: Sequelize.INTEGER,
+      type: dbcon_1.Sequelize.INTEGER,
       allowNull: true
     },
     EXPENCE_CATEGORY: {
-      type: Sequelize.STRING,
+      type: dbcon_1.Sequelize.STRING,
       allowNull: true
     },
     VENDOR: {
-      type: Sequelize.STRING,
+      type: dbcon_1.Sequelize.STRING,
       allowNull: true
     },
      BILL_NO: {
-      type: Sequelize.INTEGER,
+      type: dbcon_1.Sequelize.INTEGER,
       allowNull: true
     },
         
       EXP_DATE : {
-        type : Sequelize.DATEONLY,
+        type : dbcon_1.Sequelize.DATEONLY,
         allowNull : true
       },
 
       TOTAL_AMOUNT: {
-      type: Sequelize.DECIMAL(10, 2),
+      type: dbcon_1.Sequelize.DECIMAL(10, 2),
       allowNull: true
     },
     
