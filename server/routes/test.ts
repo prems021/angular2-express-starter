@@ -46,29 +46,11 @@ testRouter.get("/all", (request: Request, response: Response) => {
   
  
 
-
+ response.json('ji');
   
  
  
-  
 
-  //      Tas_test.sync({force: true}).then(() => {
-  //  //Table created
-  // return Tas_test.create({
-    
-  //    ITEM_NAME : 'a',
-   
-    
-      
-    
-  //    })
-  //     .then(users => { response.json({  msg: "Table created"  });
-
-  //     })
-  
-     
-
-  //     })
   })
 
 
