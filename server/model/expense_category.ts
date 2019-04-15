@@ -1,14 +1,14 @@
 import {  sequelize , Sequelize } from '../routes/dbcon';
-
+const dbcon_1 = require("../routes/dbcon");
   const Expence_category = sequelize.define('expence_category', {
     ID: {
-      type: Sequelize.INTEGER(15),
+      type: dbcon_1.Sequelize.INTEGER(15),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
     CATEGORY_NAME: {
-      type: Sequelize.STRING(15),
+      type: dbcon_1.Sequelize.STRING(15),
       allowNull: true
     }
   
