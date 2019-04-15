@@ -1,32 +1,32 @@
 import {  sequelize , Sequelize } from '../routes/dbcon';
-
+const dbcon_1 = require("../routes/dbcon");
   const Hb_products = sequelize.define('hb_products', {
     ID: {
-      type: Sequelize.INTEGER,
+      type: dbcon_1.Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
     PRODUCT_NAME: {
-      type: Sequelize.STRING(98),
+      type: dbcon_1.Sequelize.STRING(98),
       allowNull: true
     },
     HSN_CODE: {
-      type: Sequelize.STRING(15),
+      type: dbcon_1.Sequelize.STRING(15),
       allowNull: true
     },
 
       PRICE: {
-      type: Sequelize.FLOAT,
+      type: dbcon_1.Sequelize.FLOAT,
       allowNull: true
     },
     
     AVAIL_QTY: {
-                      type: Sequelize.FLOAT,
+                      type: dbcon_1.Sequelize.FLOAT,
                       allowNull: true
                },
       UNIT: {
-      type: Sequelize.STRING(10),
+      type: dbcon_1.Sequelize.STRING(10),
       allowNull: true
     },
   
