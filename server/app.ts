@@ -8,9 +8,9 @@ var cors = require('cors');
 
 import { publicRouter } from "./routes/public";
 import { adminRouter } from "./routes/admin";
-import { dbRouter } from "./routes/db";
+
 import { userRouter } from "./routes/user";
-import { testRouter } from "./routes/test";
+
 import { postRouter } from "./routes/post";
 
 const app: express.Application = express();
@@ -27,9 +27,9 @@ app.use("/api/public", publicRouter);
 
 app.use("/api/admin", adminRouter);
 
-app.use("/api/db", dbRouter);
+
 app.use("/api/user", userRouter);
-app.use("/api/test", testRouter);
+
 app.use("/api/post", postRouter);
 
 if (app.get("env") === "production") {
