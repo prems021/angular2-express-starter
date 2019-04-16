@@ -502,7 +502,7 @@ Expence_category.findOne({ where: { CATEGORY_NAME :  request.body.Exp_catogory }
 
                           // var words = toWords(request.body.number_to_convert);
                        var defaultCurrency = numberToText(request.body.number_to_convert,'',true);
-                         var result    =   numbered.stringify(request.body.number_to_convert);
+                        
                           return response.json({success:true, msg: defaultCurrency });
    
    })
