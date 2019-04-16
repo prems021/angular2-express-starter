@@ -12,6 +12,7 @@ import { Expence_category } from '../model/expense_category';
 import  { Income_expence } from '../model/income_expence';
 import { Third_party } from '../model/third_party';
 import { Cash_reciept} from '../model/cash_reciept';
+import { Expence_detail } from '../model/expence_detail';
 
 const adminRouter: Router = Router();
 
