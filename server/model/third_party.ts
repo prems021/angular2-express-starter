@@ -18,7 +18,7 @@ import {  sequelize , Sequelize } from '../routes/dbcon';
       allowNull: true
     },
       PHONE_NUMBER: {
-      type: Sequelize.INTEGER(14),
+      type: Sequelize.BIGINT(14),
       allowNull: true
     },
     
