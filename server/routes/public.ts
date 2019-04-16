@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-
+import { Sequelize, sequelize } from './dbcon';
 import { Invoice_master } from '../model/invoice_master';
 import { Hb_customers } from '../model/hb_customers';
 import { Hb_products } from '../model/products';
@@ -11,6 +11,13 @@ import { Invoice_slave } from '../model/invoice_slave';
 import { Cash_reciept} from '../model/cash_reciept';
 
 const publicRouter: Router = Router();
+
+
+const Op = Sequelize.Op;
+
+
+var numberToText = require('number2text');
+
 
 publicRouter.get("/simple", (request: Request, response: Response) => {
 
