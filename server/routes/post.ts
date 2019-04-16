@@ -3,7 +3,6 @@ import { Sequelize, sequelize } from './dbcon';
 import { Hb_products } from '../model/products';
 import { Invoice_master } from '../model/invoice_master';
 import { Invoice_slave } from '../model/invoice_slave';
-import { Tax_detail } from '../model/tax_details';
 import { Hb_customers } from '../model/hb_customers';
 
 
