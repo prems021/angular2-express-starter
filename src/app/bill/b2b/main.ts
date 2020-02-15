@@ -22,7 +22,7 @@ export class Bill_b2b  {
    j : number;
    total_qty : number = 0;
 
-   company_name : string = 'NEUTECH';
+   company_name : string = 'Zoom Mobiles';
    company_gst : string = ''
 
   
