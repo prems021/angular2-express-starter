@@ -77,8 +77,8 @@ userRouter.get("/", (request: Request, response: Response) => {
 
 
   userRouter.post('/server_check', (request: Request, response: Response) => {
-   var username = 'a'
-   var password = 's'
+   var username = 'zoom'
+   var password = 'zoom'
    
     Hb_users.findOne({
   where: {
